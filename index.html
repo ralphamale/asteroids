@@ -19,10 +19,29 @@
         var game = new this.Asteroids.Game(canvas)
         game.start();
 
-          key('a', function(){
+          key('q', function(){
             game.fireBullets();
 
           });
+
+          key("left", function() {
+            game.changeShipDir("left");
+          });
+
+          key('right', function() {
+            game.changeShipDir("right");
+          });          //
+          key('up', function() {
+            game.changeShipDir("up");
+          });
+
+          key('down', function() {
+            game.changeShipDir("down");
+          });
+
+          key('space', function() {
+            game.addPulse();
+          })
 
 
 
