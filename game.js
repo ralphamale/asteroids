@@ -48,6 +48,7 @@
     this.move();
     this.draw();
     this.checkCollisions();
+    this.checkEdges();
   };
 
   Game.FPS = 30;
@@ -59,20 +60,39 @@
     this.addAsteroids(5);
 
     var that = this;
-    window.setInterval(function() {
+    this.timer = window.setInterval(function() {
       that.step();
     }, 30); //Game.FPS
 
   };
 
+  Game.prototype.stop = function() {
+    clearInterval(this.timer);
+  }
+
+  Game.prototype.checkEdges = function () {
+    this.asteroids.forEach(function(asteroid) { //Game.DIM_X, Game.DIM_Y
+      //if ((asteroid.x - asteroid.radius >= Game.DIM_X) || (asteroid.x + asteroid.radius <= 0) || (asteroid.y-asteroid.radius >= Game.DIM_Y) || (asteroid.y+asteroid.radius <= 0)) {
+        asteroid.x = (asteroid.x - asteroid.radius > 500) ? (0-asteroid.radius+1) : asteroid.x;
+        asteroid.x = (asteroid.x + asteroid.radius < 0) ? (500+asteroid.radius-1) : asteroid.x;
+        asteroid.y = (asteroid.y - asteroid.radius > 500) ? (0-asteroid.radius+1) : asteroid.y;
+        asteroid.y = (asteroid.y + asteroid.radius < 0) ? (500+asteroid.radius-1) : asteroid.y;
+
+      })
+    }
+
+
+
   Game.prototype.checkCollisions = function() {
 
+    var that = this;
     this.asteroids.forEach(function(asteroid) {
 
       if(asteroid.isCollidedWith(this.ship)) {
         //console.log("asdfdsafa");
         this.ship.color = "black";
-        alert("You hit asteroid");
+        //alert("You hit asteroid");
+        //that.stop();
       }
 
     });
