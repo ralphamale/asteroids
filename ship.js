@@ -5,27 +5,25 @@
   var Ship = Asteroids.Ship = function(x, y) {
 
     Asteroids.MovingObject.call(this,x,y,Ship.RADIUS,Ship.COLOR);
-
-  }
+    this.dx = 1;
+    this.dy = 1;
+  };
 
   Ship.addShip = function (x, y) {
-    ship = new Ship(x, y);
+    var ship = new Ship(x, y);
     return ship;
   };
 
-  // Asteroid.randomAsteroid = function(dimX, dimY) {
-//     var x = Math.random() * dimX;
-//     var y = Math.random() * dimY;
-//     var asteroid = new Asteroid(x, y);
-//     asteroid.randomVec();
-//     return asteroid;
-//   }
-Ship.COLOR = "blue";
-Ship.RADIUS = 20;
 
-
+  Ship.COLOR = "blue";
+  Ship.RADIUS = 20;
 
   Ship.inherits(Asteroids.MovingObject);
+
+  Ship.prototype.fireBullet = function(game) {
+    var bullet = Asteroids.Bullet.addBullet(this.x, this.y,game);
+    return bullet;
+  }
 
 
 

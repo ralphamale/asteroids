@@ -18,6 +18,7 @@
   Asteroid.COLOR = "red";
   Asteroid.RADIUS = 25;
 
+
   Asteroid.randomAsteroid = function(dimX, dimY) {
     var x = Math.random() * dimX;
     var y = Math.random() * dimY;
