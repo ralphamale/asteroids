@@ -1,0 +1,3 @@
+Write a #isCollidedWith(otherObject). Compute the distance between the two centers (lookup the formula for distance between two points). If the sum of the radii is greater than this, the circles collide.
+
+Update your Game#move method to move the ship in addition to Asteroids.

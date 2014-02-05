@@ -1,7 +1,19 @@
+Function.prototype.inherits = function (BaseClass) {
+  //we use Object.prototype.
+  function Surrogate () {};
+  Surrogate.prototype = BaseClass.prototype;
+  this.prototype = new Surrogate();
+    //SuperClass.call(this)
+};
+
 (function (root) {
   var Asteroids = root.Asteroids = (root.Asteroids || {});
 
-  var MovingObject = Asteroids.MovingObject = MovingObject(x, y, radius, color) {
+
+
+
+
+  var MovingObject = Asteroids.MovingObject = function(x, y, radius, color) {
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -15,7 +27,7 @@
     this.y += this.dy;
   };
 
-  MovingObject.prototype.draw(ctx) {
+  MovingObject.prototype.draw = function(ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();
 
@@ -31,7 +43,7 @@
     ctx.fill();
   };
 
-  MovingObject.prototype.isCollidedWith(otherObject) {
+  MovingObject.prototype.isCollidedWith = function(otherObject) {
     var sumRadius = this.radius + otherObject.radius;
 
     //distance formula
@@ -39,7 +51,5 @@
 
     return sumRadius > distance;
   };
-
-
 
 })(this);
