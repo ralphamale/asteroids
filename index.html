@@ -1,50 +1,28 @@
 <html>
-<head>
-    <title>Asteroids</title>
-</head>
-<body>
-    <canvas width="500" height="500"></canvas>
+  <head>
+    <script type="application/javascript" src="vendor/jquery-1.9.1.js"></script>
+    <script type="application/javascript" src="vendor/keymaster.js"></script>
 
-    <script src="moving_object.js"></script>
-    <script src="asteroid.js"></script>
-    <script src="game.js"></script>
+    <script type="application/javascript" src="lib/util.js"></script>
+    <script type="application/javascript" src="lib/moving_object.js"></script>
+    <script type="application/javascript" src="lib/asteroid.js"></script>
+    <script type="application/javascript" src="lib/ship.js"></script>
+    <script type="application/javascript" src="lib/bullet.js"></script>
+    <script type="application/javascript" src="lib/game.js"></script>
+    <script type="application/javascript" src="lib/game_view.js"></script>
+  </head>
 
-    <script src="ship.js"></script>
-    <script src="bullet.js"></script>
-    <script src="keymaster.js"></script>
+  <body>
+    <script type="application/javascript">
+      $(function () {
+        var canvas = $("<canvas width='" + Asteroids.Game.DIM_X +
+                       "' height='" + Asteroids.Game.DIM_Y + "'></canvas>");
+        $('body').append(canvas);
 
-
-    <script>
-        var canvas = document.getElementsByTagName("canvas")[0];
-        var game = new this.Asteroids.Game(canvas)
-        game.start();
-
-          key('q', function(){
-            game.fireBullets();
-
-          });
-
-          key("left", function() {
-            game.changeShipDir("left");
-          });
-
-          key('right', function() {
-            game.changeShipDir("right");
-          });          //
-          key('up', function() {
-            game.changeShipDir("up");
-          });
-
-          key('down', function() {
-            game.changeShipDir("down");
-          });
-
-          key('space', function() {
-            game.addPulse();
-          })
-
-
-
+        var ctx = canvas.get(0).getContext("2d");
+        var game = Asteroids.Game.new();
+        new Asteroids.GameView(game, ctx).start();
+      });
     </script>
-</body>
-</html>
+  </body>
+</head>
