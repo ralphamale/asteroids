@@ -10,9 +10,16 @@
     <script type="application/javascript" src="lib/bullet.js"></script>
     <script type="application/javascript" src="lib/game.js"></script>
     <script type="application/javascript" src="lib/game_view.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
 
   <body>
+    <h1>Asteroids</h1>
+    <ul>
+      <li>'w', 's', 'a', 'd' to move</li>
+      <li>'space bar' to shoot</li>
+    </ul>
     <script type="application/javascript">
       $(function () {
         var canvas = $("<canvas width='" + Asteroids.Game.DIM_X +
