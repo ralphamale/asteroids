@@ -4,7 +4,7 @@ Classic arcade game implemented with Canvas and JavaScript. Play it on your keyb
 
 Calculates object velocities using trigonometric functions.
 
-[Deployed]["http://www.shouldihireralph.com/asteroids.html"]
+[Deployed](http://www.shouldihireralph.com/asteroids.html)
 
 ## How to play
 * 'w', 's', 'a', 'd' to move
